@@ -40,6 +40,104 @@
         <button onclick="payWithPaystack('Church Project')">Church Project<i class="fas fa-church"></i></button>
     </div>
 </section>
+    <!-- Assistant Bot -->
+<div class="assistant-bot" id="assistantBot">
+    <div class="bot-header">
+        <span>Need Help?</span>
+        <button onclick="toggleBot()" class="close-btn">&times;</button>
+    </div>
+    <div class="bot-body">
+        <p>Welcome! Need help with donations?</p>
+        <p>1. Enter your email and amount.</p>
+        <p>2. Click a category to proceed.</p>
+        <p>Let us know if you have any issues!</p>
+    </div>
+</div>
+
+<!-- Bot Toggle Button -->
+<button class="bot-toggle" id="botToggle" onclick="toggleBot()">💬</button>
+
+<!-- CSS Styling -->
+<style>
+    /* Assistant Bot Styling */
+    .assistant-bot {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 250px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        display: none;
+        z-index: 1000;
+    }
+
+    .bot-header {
+        background: #007bff;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    .bot-body {
+        padding: 10px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    /* Bot Toggle Button */
+    .bot-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        background: #007bff;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+    }
+
+    .bot-toggle:hover {
+        background: #0056b3;
+    }
+</style>
+
+<!-- JavaScript -->
+<script>
+    // Show bot when page loads
+    window.onload = function() {
+        document.getElementById("assistantBot").style.display = "block";
+    };
+
+    // Function to toggle bot visibility
+    function toggleBot() {
+        let bot = document.getElementById("assistantBot");
+        let button = document.getElementById("botToggle");
+        if (bot.style.display === "none") {
+            bot.style.display = "block";
+            button.innerHTML = "💬";
+        } else {
+            bot.style.display = "none";
+            button.innerHTML = "❓";
+        }
+    }
+</script>
 
 <footer>
     © 2025 House of Prayer Parish | All Rights Reserved
