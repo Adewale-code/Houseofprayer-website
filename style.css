@@ -1,0 +1,134 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Header */
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    font-size: 24px;
+    text-shadow: 2px 2px 5px black;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background: #34495e;
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    background: #1abc9c;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+    background-image: url('Churchcover.gif'); /* Make sure the image file is in the same folder */
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents image repetition */
+    color: white; /* Ensures text remains readable */
+    padding: 80px 20px;
+    text-shadow: 2px 2px 5px black;
+}
+
+.hero h2 {
+    font-size: 36px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* Giving Section */
+.giving-home {
+    background: white;
+    padding: 50px 20px;
+}
+
+.giving-home h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.giving-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+.giving-item {
+    background: #1abc9c;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.giving-item i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.giving-item h3 {
+    font-size: 18px;
+}
+
+.giving-item:hover {
+    background: #16a085;
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .hero h2 {
+        font-size: 28px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .giving-grid {
+        grid-template-columns: repeat(2, minmax(120px, 1fr));
+    }
+}

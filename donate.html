@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Giving - Support the Church</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+<header id="donation-header">Online Giving - Support the Church</header>
+
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="sermons.html">Sermons</a>
+    <a href="events.html">Services</a>
+    <a href="donate.html">Give</a>
+    
+</nav>
+
+<section class="donation-section">
+    <h2 id="giving-title">Choose a Giving Category</h2>
+    <p>FIll in the form and click on any category to validate payment.</p>
+    
+    <label>Your Email:</label>
+    <input type="email" id="email" placeholder="Enter your email">
+    
+    <label>Enter Amount (₦):</label>
+    <input type="number" id="amount" placeholder="Enter amount">
+    
+    <div class="giving-buttons">
+        <button onclick="payWithPaystack('Offering')">Offering<i class="fas fa-hand-holding-heart"></i></button>
+        <button onclick="payWithPaystack('Tithe')">Tithe<i class="fas fa-donate"></i></button>
+        <button onclick="payWithPaystack('Feed a Child')">Feed a Child<i class="fas fa-child"></i></button>
+        <button onclick="payWithPaystack('Welfare')">Welfare<i class="fas fa-hands-helping"></i></button>
+        <button onclick="payWithPaystack('Church Project')">Church Project<i class="fas fa-church"></i></button>
+    </div>
+</section>
+
+<footer>
+    © 2025 House of Prayer Parish | All Rights Reserved
+</footer>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f4f4;
+        text-align: center;
+    }
+    
+    /* Header */
+    header {
+        background: #2c3e50;
+        color: white;
+        padding: 20px 0;
+        font-size: 24px;
+    }
+    
+    /* Navbar */
+    .navbar {
+        display: flex;
+        justify-content: center;
+        background: #34495e;
+        padding: 10px;
+    }
+    
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 15px;
+        transition: 0.3s;
+    }
+    
+    .navbar a:hover {
+        background: #1abc9c;
+        border-radius: 5px;
+    }
+    
+    /* Donation Section */
+    .donation-section {
+        background: white;
+        padding: 40px;
+        max-width: 500px;
+        margin: 20px auto;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .donation-section h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    
+    input {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    
+    .giving-buttons button {
+        background: #1abc9c;
+        color: white;
+        padding: 10px 15px;
+        margin: 10px 5px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    
+    .giving-buttons button:hover {
+        background: #16a085;
+    }
+    
+    /* Footer */
+    footer {
+        background: #2c3e50;
+        color: white;
+        padding: 15px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    
+    /* Responsive */
+    @media (max-width: 600px) {
+        .donation-section {
+            width: 90%;
+        }
+    }
+    
+</style>
+
+<script>
+    function payWithPaystack(category) {
+        let email = document.getElementById("email").value;
+        let amount = document.getElementById("amount").value * 100; // Convert to kobo
+    
+        if (!email || !amount) {
+            alert("Please enter your email and amount.");
+            return;
+        }
+    
+        document.getElementById("giving-title").innerText = "You are giving: " + category;
+    
+        let handler = PaystackPop.setup({
+            key: 'pk_live_182d138993f3cce01a4d70db5a22aef3ba96d0d2',
+            email: email,
+            amount: amount,
+            currency: "NGN",
+            ref: "donation-" + Math.floor(Math.random() * 100000000) + 1,
+            label: category,
+            callback: function(response) {
+                // Redirect to the success page with transaction reference
+                window.location.href = "success.html?ref=" + response.reference;
+            },
+            onClose: function() {
+                alert("Payment window closed.");
+            }
+        });
+    
+        handler.openIframe();
+    }
+    
+</script>
+
+</body>
+</html>

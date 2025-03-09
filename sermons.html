@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermons - House of Prayer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            margin-top: 30px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background: #34495e;
+            padding: 10px;
+        }
+        
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: 0.3s;
+        }
+        
+        .navbar a:hover {
+            background: #1abc9c;
+            border-radius: 5px;
+        }
+        h1 {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        .sermon-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .sermon-box {
+            background: white;
+            padding: 15px;
+            width: 320px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .video-frame {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            position: relative;
+        }
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 24px;
+            padding: 15px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .watch-btn {
+            display: block;
+            background: #1877f2;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .watch-btn:hover {
+            background: #1256a3;
+        }
+        .live a{
+            text-decoration: none;
+        background-color: red;
+        color: #f0f0f0;
+        font-size: larger;
+        
+        }
+        .live {
+            display: inline-block;
+            padding: 10px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            animation: blink 1s infinite alternate;
+        }
+        
+        @keyframes blink {
+            0% { background-color: red; }
+            100% { background-color: blue; }
+        }
+        .live a:hover {
+            background: #6e82f3;
+            transform: scale(1.1);
+        }
+        .logo {
+            justify-content: center; /* Centers horizontally */
+            align-items: center; /* Centers vertically */
+            height: 100px; /* Adjust the height as needed */
+        }
+        
+        .logo img {
+            max-width: 100%; /* Ensures responsiveness */
+            max-height: 100%; /* Prevents overflow */
+        }
+        /* Styling the container */
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+/* Styling the icons */
+.icon {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 24px;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Facebook Icon */
+.facebook {
+    color: #1877F2;
+    border: 2px solid #1877F2;
+}
+.facebook:hover {
+    background: #1877F2;
+    color: #fff;
+}
+
+/* YouTube Icon */
+.youtube {
+    color: #FF0000;
+    border: 2px solid #FF0000;
+}
+.youtube:hover {
+    background: #FF0000;
+    color: #fff;
+}
+
+/* TikTok Icon */
+.tiktok {
+    color: #000;
+    border: 2px solid #000;
+}
+.tiktok:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Instagram Icon */
+.instagram {
+    color: #E1306C;
+    border: 2px solid #E1306C;
+}
+.instagram:hover {
+    background: #E1306C;
+    color:#fff;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="churchlogo.jpg" alt="Logo">
+        </div>
+        <h1> The Redeemed Christain Church of God<br>House of Prayer Parish</h1>
+    </header>
+    
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="sermons.html">Sermons</a>
+        <a href="events.html">Services</a>
+        <a href="donate.html">Give</a>
+        
+    </nav>
+    <h1><div class="live"><a href="https://www.facebook.com/rccghouseofprayerbaruwa" target="_blank">WATCH LIVE</a></div></h1>
+    <h1>Past Sermons</h1>
+    
+
+    <div class="sermon-container">
+        <!-- Sermon 1 -->
+        <div class="sermon-box">
+            <h3>Thanksgiving Sunday</h3>
+            <div class="video-frame" style="background-image: url('RCCG LOGO.jpg');">
+                <div class="play-button">▶</div>
+            </div>
+            <a href="https://fb.watch/ycx6MvPXVD/" target="_blank" class="watch-btn">Watch on Facebook</a>
+        </div>
+
+        <!-- Sermon 2 -->
+        <div class="sermon-box">
+            <h3>Pst Olurunsola Olukayode</h3>
+            <div class="video-frame" style="background-image: url('pastor k.jpg');">
+                <div class="play-button">▶</div>
+            </div>
+            <a href="https://web.facebook.com/share/v/15r9U6UvSp/" target="_blank" class="watch-btn">Watch on Facebook</a>
+        </div>
+
+        <!-- Sermon 3 -->
+        <div class="sermon-box">
+            <h3>Pst Gbolahan Fowowe </h3>
+            <div class="video-frame" style="background-image: url('PST G 19.jpg');">
+                <div class="play-button">▶</div>
+            </div>
+            <a href="https://web.facebook.com/share/v/191naRasXt/" target="_blank" class="watch-btn">Watch on Facebook</a>
+        </div>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/rccghouseofprayerbaruwa" target="_blank" class="icon facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.youtube.com/@RCCGHouseOfPrayerpeaceestate" target="_blank" class="icon youtube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.tiktok.com/@rccghopppeaceestate" target="_blank" class="icon tiktok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.instagram.com/rccg_houseofprayer_baruwa" target="_blank" class="icon instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+       </div>
+       <footer>
+        © 2025 House of Prayer Parish | All Rights Reserved
+    </footer>
+
+</body>
+</html>
