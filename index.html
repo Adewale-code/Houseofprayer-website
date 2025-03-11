@@ -215,6 +215,179 @@
 }
 
 </style>
+    <!-- Bot HTML Structure -->
+<div class="chat-bot" id="chatBot">
+    <div class="bot-header">
+        <span>RCCG House of Prayer Parish</span>
+        <button onclick="toggleBot()" class="close-btn">&times;</button>
+    </div>
+    <div class="bot-body" id="botBody">
+        <p><strong>Bot:</strong> Welcome to RCCG House of Prayer Parish!</p>
+    </div>
+    <div class="bot-footer">
+        <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleUserMessage(event)">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<!-- Bot Toggle Button -->
+<button class="bot-toggle" id="botToggle" onclick="toggleBot()">💬</button>
+
+<!-- CSS Styling -->
+<style>
+    /* Bot Container */
+    .chat-bot {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        width: 300px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        z-index: 1000;
+    }
+
+    /* Bot Header */
+    .bot-header {
+        background: #007bff;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+    /* Bot Body */
+    .bot-body {
+        padding: 10px;
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 14px;
+    }
+
+    /* Bot Footer */
+    .bot-footer {
+        display: flex;
+        padding: 5px;
+        border-top: 1px solid #ddd;
+    }
+
+    .bot-footer input {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .bot-footer button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        margin-left: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Bot Toggle Button */
+    .bot-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #007bff;
+        color: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+    }
+
+    .bot-toggle:hover {
+        background: #0056b3;
+    }
+</style>
+
+<!-- JavaScript for Bot Functionality -->
+<script>
+    // Show bot when page loads
+    window.onload = function() {
+        document.getElementById("chatBot").style.display = "block";
+    };
+
+    // Toggle bot visibility
+    function toggleBot() {
+        const bot = document.getElementById("chatBot");
+        const botToggle = document.getElementById("botToggle");
+
+        if (bot.style.display === "none") {
+            bot.style.display = "block";
+            botToggle.innerHTML = "💬";
+        } else {
+            bot.style.display = "none";
+            botToggle.innerHTML = "❓";
+        }
+    }
+
+    // Handle user message
+    function handleUserMessage(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    }
+
+    function sendMessage() {
+        const userInput = document.getElementById("userInput").value.trim();
+        if (userInput === "") return;
+
+        const botBody = document.getElementById("botBody");
+
+        // Display user's message
+        const userMessage = document.createElement("p");
+        userMessage.innerHTML = <strong>You:</strong> ${userInput};
+        botBody.appendChild(userMessage);
+
+        // Scroll to the bottom
+        botBody.scrollTop = botBody.scrollHeight;
+
+        // Generate bot's response
+        const botMessage = document.createElement("p");
+        botMessage.innerHTML = <strong>Bot:</strong> ${generateBotResponse(userInput)};
+        botBody.appendChild(botMessage);
+
+        // Clear input field
+        document.getElementById("userInput").value = "";
+    }
+
+    // Generate simple bot responses
+    function generateBotResponse(message) {
+        message = message.toLowerCase();
+
+        if (message.includes("hello") || message.includes("hi")) {
+            return "Hello! How may I assist you today?";
+        } else if (message.includes("service") || message.includes("donation")) {
+            return "You can visit the donation page to contribute. Need help with that?";
+        } else if (message.includes("about")) {
+            return "RCCG House of Prayer Parish is here to bring you closer to God. Let me know what you need assistance with.";
+        } else {
+            return "I'm here to help! Please be more specific about your request.";
+        }
+    }
+</script>
+
 
 <section class="giving-home">
     <h2>Ways to Give</h2>
