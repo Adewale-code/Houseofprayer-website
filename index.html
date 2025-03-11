@@ -300,7 +300,6 @@
     </a>
     </div>
     
-
 <style>
         /* Bot Container */
         .chat-bot {
@@ -345,6 +344,26 @@
             animation: fadeIn 0.5s;
         }
 
+        /* Message Styling */
+        .bot-message, .user-message {
+            margin: 10px 0;
+            padding: 8px 12px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            text-align: left;
+        }
+
+        .user-message {
+            background-color: #007bff;
+            color: white;
+            text-align: right;
+            margin-left: auto;
+        }
+
         /* Bot Toggle Button */
         .bot-toggle {
             position: fixed;
@@ -369,6 +388,38 @@
             background: #0056b3;
         }
 
+        /* Input Area */
+        .input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background: #f9f9f9;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .input-area input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .input-area button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-left: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .input-area button:hover {
+            background: #0056b3;
+        }
+
         /* Animations */
         @keyframes slideIn {
             0% {transform: translateY(100%);}
@@ -386,6 +437,7 @@
         }
     </style>
 
+
 <!-- Bot HTML Structure -->
 <div class="chat-bot" id="chatBot">
     <div class="bot-header">
@@ -393,7 +445,11 @@
         <button onclick="toggleBot()" class="close-btn">&times;</button>
     </div>
     <div class="bot-body" id="botBody">
-        <p><strong>Bot:</strong> Welcome to RCCG House of Prayer Parish! How can I assist you today?</p>
+        <div class="bot-message">Welcome to RCCG House of Prayer Parish! How can I assist you today?</div>
+    </div>
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
     </div>
 </div>
 
@@ -411,7 +467,6 @@
         toggleBtn.style.display = "none";
     });
 
-    // Toggle the bot visibility
     function toggleBot() {
         const bot = document.getElementById("chatBot");
         const toggleBtn = document.getElementById("botToggle");
@@ -424,11 +479,48 @@
             toggleBtn.style.display = "block";
         }
     }
+
+    function sendMessage() {
+        const userInput = document.getElementById("userInput").value.trim();
+        if (userInput === "") return;
+
+        const botBody = document.getElementById("botBody");
+
+        // Display User Message
+        const userMessage = document.createElement("div");
+        userMessage.className = "user-message";
+        userMessage.innerText = userInput;
+        botBody.appendChild(userMessage);
+
+        // Clear input field
+        document.getElementById("userInput").value = "";
+
+        // Scroll to bottom
+        botBody.scrollTop = botBody.scrollHeight;
+
+        // Generate Bot Response
+        setTimeout(() => {
+            const botMessage = document.createElement("div");
+            botMessage.className = "bot-message";
+
+            // Basic Replies
+            const responses = {
+                "hello": "Hello! How may I assist you today?",
+                "how are you?": "I'm here to assist you. How can I help?",
+                "donation": "You can donate by filling out the donation form. How else can I assist you?",
+                "service times": "Our services hold every Sunday at 10 AM. Midweek services are on Wednesdays at 6 PM.",
+                "bye": "Goodbye! Have a blessed day!",
+            };
+
+            const reply = responses[userInput.toLowerCase()] || "Sorry, I can only provide basic information right now. Please try something else.";
+            botMessage.innerText = reply;
+            botBody.appendChild(botMessage);
+
+            // Scroll to bottom
+            botBody.scrollTop = botBody.scrollHeight;
+        }, 800);
+    }
 </script>
-
-
-
-
 
 <footer>
     © 2025 House of Prayer Parish | All Rights Reserved
