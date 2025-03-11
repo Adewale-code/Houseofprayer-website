@@ -212,10 +212,9 @@
 .instagram:hover {
     background: #E1306C;
     color: #fff;
-}
-
 </style>
-    <!-- Bot HTML Structure -->
+
+<!-- Bot HTML Structure -->
 <div class="chat-bot" id="chatBot">
     <div class="bot-header">
         <span>RCCG House of Prayer Parish</span>
@@ -333,12 +332,12 @@
         const bot = document.getElementById("chatBot");
         const botToggle = document.getElementById("botToggle");
 
-        if (bot.style.display === "none") {
+        if (bot.style.display === "none" || bot.style.display === "") {
             bot.style.display = "block";
-            botToggle.innerHTML = "💬";
+            botToggle.innerHTML = "❓";  // Changes icon to question mark when open
         } else {
             bot.style.display = "none";
-            botToggle.innerHTML = "❓";
+            botToggle.innerHTML = "💬";  // Changes icon to chat icon when closed
         }
     }
 
