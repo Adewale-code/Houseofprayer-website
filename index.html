@@ -280,6 +280,7 @@
 
         </h3>
         </div>
+    
 </section>
 
 <div class="social-icons">
@@ -296,6 +297,7 @@
         <i class="fab fa-instagram"></i>
     </a>
     </div>
+    
 <style>
         /* Bot Container */
         .chat-bot {
@@ -404,23 +406,27 @@
 
 <!-- JavaScript for Bot Functionality -->
 <script>
-    // Show bot when page loads
+    // Automatically show the bot when the page loads
     window.onload = function() {
         document.getElementById("chatBot").style.display = "block";
+        document.getElementById("botToggle").style.display = "none";  // Hide the toggle button initially
     };
 
-    // Toggle bot visibility
+    // Toggle the bot visibility
     function toggleBot() {
         const bot = document.getElementById("chatBot");
-        
+        const toggleBtn = document.getElementById("botToggle");
+
         if (bot.style.display === "none") {
             bot.style.display = "block";
+            toggleBtn.style.display = "none";
         } else {
             bot.style.display = "none";
+            toggleBtn.style.display = "block";
         }
     }
 
-    // Handle user message
+    // Handle user message input
     function handleUserMessage(event) {
         if (event.key === "Enter") {
             sendMessage();
@@ -465,6 +471,7 @@
         }
     }
 </script>
+
 
 
 
