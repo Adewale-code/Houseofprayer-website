@@ -221,7 +221,7 @@
         <button onclick="toggleBot()" class="close-btn">&times;</button>
     </div>
     <div class="bot-body" id="botBody">
-        <p><strong>Bot:</strong> Welcome to RCCG House of Prayer Parish!</p>
+        <p><strong>Bot:</strong> Welcome to RCCG House of Prayer Parish! How can I assist you today?</p>
     </div>
     <div class="bot-footer">
         <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleUserMessage(event)">
@@ -245,6 +245,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         display: none;
         z-index: 1000;
+        border: 1px solid #ddd;
     }
 
     /* Bot Header */
@@ -330,14 +331,11 @@
     // Toggle bot visibility
     function toggleBot() {
         const bot = document.getElementById("chatBot");
-        const botToggle = document.getElementById("botToggle");
-
-        if (bot.style.display === "none" || bot.style.display === "") {
+        
+        if (bot.style.display === "none") {
             bot.style.display = "block";
-            botToggle.innerHTML = "❓";  // Changes icon to question mark when open
         } else {
             bot.style.display = "none";
-            botToggle.innerHTML = "💬";  // Changes icon to chat icon when closed
         }
     }
 
@@ -377,15 +375,16 @@
 
         if (message.includes("hello") || message.includes("hi")) {
             return "Hello! How may I assist you today?";
-        } else if (message.includes("service") || message.includes("donation")) {
-            return "You can visit the donation page to contribute. Need help with that?";
-        } else if (message.includes("about")) {
+        } else if (message.includes("donation") || message.includes("give")) {
+            return "You can visit our donation page and select a category. Do you need help with that?";
+        } else if (message.includes("about") || message.includes("church")) {
             return "RCCG House of Prayer Parish is here to bring you closer to God. Let me know what you need assistance with.";
         } else {
             return "I'm here to help! Please be more specific about your request.";
         }
     }
 </script>
+
 
 
 <section class="giving-home">
