@@ -56,7 +56,7 @@ header {
     background-size: cover; /* Ensures the image covers the entire section */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents image repetition */
-    color: white; /* Ensures text remains readable */
+    color:  #007bff; /* Ensures text remains readable */
     padding: 80px 20px;
     text-shadow: 2px 2px 5px black;
 }
