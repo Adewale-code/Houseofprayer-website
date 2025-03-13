@@ -190,46 +190,9 @@ p {
             <img src="pic 3.jpg" alt="CSR Project 3">
             <img src="csr5.jpg" alt="CSR Project 3">
             <img src="csr7.jpg" alt="CSR Project 3">
-        </div><br><br>
+        </div>
+    </div><br>
 
-        
-    </div>
-    <div id="counters" style="text-align: center; padding: 30px;">
-        <div>
-            <h1 id="lives-impacted">0</h1>
-            <p>LIVES IMPACTED</p>
-        </div>
-        <div>
-            <h1 id="projects-executed">0</h1>
-            <p>PROJECTS EXECUTED</p>
-        </div>
-        <div>
-            <h1 id="partners">0</h1>
-            <p>PARTNERS</p>
-        </div>
-    </div>
-    <script>
-        function animateCounter(id, start, end, duration, increment) {
-            let current = start;
-            const incrementAmount = increment || Math.ceil((end - start) / (duration / 50));
-            const obj = document.getElementById(id);
-    
-            const timer = setInterval(() => {
-                current += incrementAmount;
-                if (current >= end) {
-                    current = end;
-                    clearInterval(timer);
-                }
-                obj.innerText = current.toLocaleString();
-            }, 50);
-        }
-    
-        // Animate all counters
-        animateCounter('lives-impacted', 139984348, 139984348 + 1000000, 5000);
-        animateCounter('projects-executed', 661504, 661504 + 500, 5000);
-        animateCounter('partners', 44090, 44090 + 100, 5000);
-    </script>
-    
     <script src="https://js.paystack.co/v1/inline.js"></script>
     
     <script>
@@ -266,6 +229,43 @@ p {
     
             handler.openIframe();
         });
+    </script>
+        <div id="counters" style="text-align: center; padding: 30px;">
+        <div>
+            <h1 id="lives-impacted">0</h1>
+            <p>LIVES IMPACTED</p>
+        </div>
+        <div>
+            <h1 id="projects-executed">0</h1>
+            <p>PROJECTS EXECUTED</p>
+        </div>
+        <div>
+            <h1 id="partners">0</h1>
+            <p>PARTNERS</p>
+        </div>
+    </div>
+    
+
+     <script>
+        function animateCounter(id, start, end, duration, increment) {
+            let current = start;
+            const incrementAmount = increment || Math.ceil((end - start) / (duration / 50));
+            const obj = document.getElementById(id);
+    
+            const timer = setInterval(() => {
+                current += incrementAmount;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                obj.innerText = current.toLocaleString();
+            }, 50);
+        }
+    
+        // Animate all counters
+        animateCounter('lives-impacted', 139984348, 139984348 + 1000000, 5000);
+        animateCounter('projects-executed', 661504, 661504 + 500, 5000);
+        animateCounter('partners', 44090, 44090 + 100, 5000);
     </script>
     
 
