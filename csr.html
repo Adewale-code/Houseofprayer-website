@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCCG CSR Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <style>
+/* Gallery Styling */
+.gallery-section {
+    padding: 30px;
+    text-align: center;
+}
+
+.gallery {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Image Styling */
+.gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+/* Animation */
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile View - Larger Images */
+@media (max-width: 768px) {
+    .gallery img {
+        height: 180px;
+    }
+    .gallery{
+        grid-template-columns: repeat(2, 2fr);
+    }
+}
+
+
+/* Input Field Styling */
+#amount {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 15px;
+    margin: 15px 0;
+    border: 2px solid #4a90e2;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input Focus Animation */
+#amount:focus {
+    border-color: #ff7f50;
+    box-shadow: 0 0 8px rgba(255, 127, 80, 0.6);
+}
+
+/* Button Styling */
+#pay-btn {
+    padding: 12px 20px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Button Hover Animation */
+#pay-btn:hover {
+    background-color: #ff7f50;
+    transform: scale(1.05);
+}
+
+/* Button Click Animation */
+#pay-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    #amount, #pay-btn {
+        max-width: 90%;
+    }
+}
+
+.welfare {
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 120px; /* Adjust the height as needed */
+}
+
+.welfare img {
+    max-width: 120%; /* Ensures responsiveness */
+    max-height: 120%; /* Prevents overflow */
+}
+/* Animated H2 Styling */
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #4a90e2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    animation: slideIn 1s ease-out;
+}
+
+/* Glowing Text Animation */
+h2::before,
+h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 0%;
+    height: 4px;
+    background-color: #ff7f50;
+    transition: all 0.4s;
+}
+
+/* Hover Effect */
+h2:hover::before,
+h2:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Slide In Animation */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#counters div {
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-size: 3em;
+    color: #333;
+    margin: 0;
+}
+
+p {
+    font-size: 1.2em;
+    color: #666;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="sermons.html">Sermons</a>
+        <a href="events.html">Services</a>
+        <a href="donate.html">Online Giving</a>
+    </nav>
+
+    <div class="welfare">
+        <img src="csr8.jpg" alt="welfare">
+    </div>
+    <div class="gallery-section">
+        <h2>Our CSR Projects</h2><br><br>
+        <input type="text" id="amount" placeholder="Enter Amount (₦)">
+        <button id="pay-btn">Donate Now</button><br><br>
+        <div class="gallery">
+            <img src="csr gal.jpg" alt="CSR Project 1">
+            <img src="csr2.jpg" alt="CSR Project 2">
+            <img src="csr3.jpg" alt="CSR Project 3">
+            <img src="csr4.jpg" alt="CSR Project 3">
+            <img src="pic 2.jpg" alt="CSR Project 3">
+            <img src="pic 3.jpg" alt="CSR Project 3">
+            <img src="csr5.jpg" alt="CSR Project 3">
+            <img src="csr7.jpg" alt="CSR Project 3">
+        </div><br><br>
+
+        
+    </div>
+    <div id="counters" style="text-align: center; padding: 30px;">
+        <div>
+            <h1 id="lives-impacted">0</h1>
+            <p>LIVES IMPACTED</p>
+        </div>
+        <div>
+            <h1 id="projects-executed">0</h1>
+            <p>PROJECTS EXECUTED</p>
+        </div>
+        <div>
+            <h1 id="partners">0</h1>
+            <p>PARTNERS</p>
+        </div>
+    </div>
+    <script>
+        function animateCounter(id, start, end, duration, increment) {
+            let current = start;
+            const incrementAmount = increment || Math.ceil((end - start) / (duration / 50));
+            const obj = document.getElementById(id);
+    
+            const timer = setInterval(() => {
+                current += incrementAmount;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                obj.innerText = current.toLocaleString();
+            }, 50);
+        }
+    
+        // Animate all counters
+        animateCounter('lives-impacted', 139984348, 139984348 + 1000000, 5000);
+        animateCounter('projects-executed', 661504, 661504 + 500, 5000);
+        animateCounter('partners', 44090, 44090 + 100, 5000);
+    </script>
+    
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    
+    <script>
+        const payBtn = document.getElementById("pay-btn");
+    
+        payBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+    
+            let amountInput = document.getElementById("amount").value;
+    
+            // Remove any '₦' sign if present and convert to number
+            amountInput = amountInput.replace(/₦/g, '').trim();
+    
+            if (!amountInput || isNaN(amountInput) || amountInput <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+    
+            let handler = PaystackPop.setup({
+                key: 'pk_live_182d138993f3cce01a4d70db5a22aef3ba96d0d2', // Replace with your public key
+                email: 'email', // Replace with a valid email address
+                amount: amountInput * 100, // Convert to Kobo
+                currency: 'NGN',
+                ref: '' + Math.floor(Math.random() * 1000000000 + 1),
+                label: 'CSR Donation',
+                callback: function(response) {
+                    // Redirect to a success page
+                    window.location.href = 'success.html?ref=' + response.reference;
+                },
+                onClose: function() {
+                    alert('Transaction was not completed.');
+                }
+            });
+    
+            handler.openIframe();
+        });
+    </script>
+    
+
+</body>
+</html>
