@@ -12,6 +12,8 @@
 <body>
 
 <header>
+        <div id="google_translate_element"></div>
+
     <div class="logo">
         <img src="churchlogo.jpg" alt="Logo">
     </div>
@@ -31,9 +33,94 @@
     <h2>Welcome to House of Prayer Parish</h2>
     <p>Experience the presence of God and be a blessing to others.</p>
     <div class="live"><a href="https://www.facebook.com/rccghouseofprayerbaruwa" target="_blank">WATCH LIVE</a></div>
+    <section id="bible-verse" class="verse-rotat">
+        
+        <div id="verse-container">
+            <blockquote class="verse-text active"></blockquote>
+        </div>
+    </section>
   
 </div>
+    <script>
+    const verses = [
+    "Phillippians 4:13 - I can do all things through Christ who strengthens me.",
+    "Jeremiah 29:11 - 'For I know the plans i have for you,' declares the lord.",
+    "Psalm 23:1 - The Lord is my shepherd; I shall not want.",
+    "Romans 8:28 - All things work together for good to those who love God.",
+    "Proverbs 3:5 - Trust in the lord with all your heart and lean not on your own understand."
+    ];
+
+    let verseIndex = 0;
+    const verseElement = document.querySelector(".verse-text");
+
+    function showVerse() {
+        verseElement.classList.remove("active");
+        setTimeout(() => {
+            verseElement.textContent = verses[verseIndex];
+            verseElement.classList.add("active");
+            verseIndex = (verseIndex + 1) % verses.length;
+        }, 1000); // Delay to allow fade out
+    }
+
+    showVerse();
+    setInterval(showVerse, 6000); // change every 6 seconds
+</script>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 <style>
+        #google_translate_element {
+        margin-top: 50px;
+    }
+    .testimonials-section {
+        background: #eedfdf;
+        padding: 40px 20px;
+        text-align: center;
+        
+    }
+    .carousel {
+        max-width: 600px;
+        margin: auto;
+        position: relative;
+    }
+    .testimonial {
+        display: none;
+        animation: fadeIn 1s ease-in-out;
+    }
+    .testimonial.active {
+        display: block;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    .verse-rotator {
+        background: #fff4e6;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    #verse-container {
+        max-width: 700px;
+        margin: auto;
+        min-height: 80px;
+        position: relative;
+    }
+    .verse-text {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        font-style: italic;
+        position: absolute;
+        width: 100%;
+       
+    }
+    .verse-text.active {
+        opacity: 1;
+    }
     .logo {
         justify-content: center; /* Centers horizontally */
         align-items: center; /* Centers vertically */
